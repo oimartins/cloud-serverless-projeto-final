@@ -1,0 +1,22 @@
+exports.aiAnalyzer = (req, res) => {
+
+    const order = req.body;
+
+    let riskLevel = "LOW";
+
+    if (order.amount >= 1000) {
+        riskLevel = "HIGH";
+    }
+
+    console.log(JSON.stringify({
+        service: "aiAnalyzer",
+        orderId: order.id,
+        riskLevel: riskLevel
+    }));
+
+    return res.status(200).json({
+        orderId: order.id,
+        riskLevel: riskLevel
+    });
+
+};

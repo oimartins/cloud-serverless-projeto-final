@@ -1,0 +1,63 @@
+main:
+  params: [input]
+
+  steps:
+
+    - validateOrder:
+
+        call: http.post
+
+        args:
+          url: "URL_VALIDATE_ORDER"
+
+          body:
+            id: ${input.orderId}
+            amount: ${input.amount}
+
+        result: validationResult
+
+    - analyzeOrder:
+
+        call: http.post
+
+        args:
+          url: "URL_AI_ANALYZER"
+
+          body:
+            id: ${input.orderId}
+            amount: ${input.amount}
+
+        result: aiResult
+
+    - publishOrder:
+
+        call: googleapis.pubsub.v1.projects.topics.publish
+
+        args:
+          topic: "projects/PROJECT_ID/topics/orders"
+
+          body:
+            messages:
+              - data: "T3JkZXIgUHJvY2Vzc2Vk"
+
+        result: pubsubResult
+
+    - notifyOrder:
+
+        call: http.post
+
+        args:
+          url: "URL_NOTIFY_ORDER"
+
+          body:
+            orderId: ${input.orderId}
+            riskLevel: ${aiResult.body.riskLevel}
+
+        result: notifyResult
+
+    - finish:
+
+        return:
+          status: "SUCCESS"
+          orderId: ${input.orderId}
+          risk: ${aiResult.body.riskLevel}
