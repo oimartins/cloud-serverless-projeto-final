@@ -1,11 +1,5 @@
 # Projeto Final - Arquitetura Event-Driven com IA
 
-## Integrantes
-
-- Carolina da Silva Martins
-
----
-
 # Visão Geral
 
 Este projeto consolida todos os conceitos desenvolvidos ao longo da disciplina, reunindo uma arquitetura serverless orientada a eventos (Event-Driven Architecture) utilizando serviços da Google Cloud Platform (GCP).
@@ -213,37 +207,29 @@ cloud-serverless-final/
 ├── workflow.yaml
 │
 ├── validateOrder/
-│   ├── index.js
-│   └── package.json
+│   ├── validate-index.js
+│   └── validate-package.json
 │
 ├── aiAnalyzer/
-│   ├── index.js
-│   └── package.json
+│   ├── ai-index.js
+│   └── ai-package.json
 │
 ├── notifyOrder/
-│   ├── index.js
-│   └── package.json
-│
-├── docs/
-│   ├── arquitetura.png
-│   ├── observabilidade.png
-│   ├── pipeline.png
-│   └── workflow-execution.png
+│   ├── notify-index.js
+│   └── notify-package.json
 │
 └── README.md
 ```
 
 ---
 
-# Perguntas e Respostas
-
-## 1. Por que utilizar uma arquitetura Event-Driven?
+## Checkpoint 1: Arquitetura Event-Driven
 
 A arquitetura orientada a eventos promove baixo acoplamento entre os serviços, facilitando escalabilidade, manutenção e evolução do sistema. Além disso, permite processamento assíncrono e maior resiliência a falhas.
 
 ---
 
-## 2. Por que utilizar o Google Cloud Pub/Sub?
+## Checkpoint 2: Google Cloud Pub/Sub
 
 O Pub/Sub permite a troca de mensagens entre componentes sem que eles dependam diretamente uns dos outros.
 
@@ -256,7 +242,7 @@ Benefícios:
 
 ---
 
-## 3. Por que utilizar Google Cloud Functions?
+## Checkpoint 3: Google Cloud Functions
 
 Cloud Functions permite executar código sob demanda sem necessidade de gerenciar servidores.
 
@@ -269,7 +255,7 @@ Benefícios:
 
 ---
 
-## 4. Por que utilizar Google Cloud Workflows?
+## Checkpoint 4-5: Google Cloud Workflows/Github Actions
 
 O Workflows centraliza a lógica de orquestração do sistema.
 
@@ -282,15 +268,11 @@ Benefícios:
 
 ---
 
-## 5. Por que integrar Inteligência Artificial?
+## Projeto Final: Inteligência Artificial
 
 A IA permite adicionar capacidades de tomada de decisão e classificação automática aos processos de negócio.
 
 No projeto, a IA é utilizada para avaliar o risco dos pedidos antes da publicação dos eventos.
-
----
-
-## 6. Como o projeto trata falhas?
 
 Em caso de falha:
 
@@ -300,7 +282,7 @@ Em caso de falha:
 
 ---
 
-## 7. Como garantir observabilidade?
+## Observabilidade
 
 Foram utilizados:
 
@@ -313,7 +295,7 @@ Isso permite rastrear o comportamento da arquitetura em tempo real.
 
 ---
 
-## 8. Como funciona o CI/CD?
+## Como funciona o CI/CD?
 
 Sempre que ocorre um push na branch principal:
 
@@ -324,7 +306,7 @@ Sempre que ocorre um push na branch principal:
 
 ---
 
-## 9. Quais são os principais benefícios da solução?
+## Principais benefícios 
 
 - Arquitetura desacoplada
 - Escalabilidade automática
@@ -393,7 +375,6 @@ evitando perda de dados.
 ### Logs sem informações sensíveis
 
 Os logs armazenam apenas informações operacionais.
-
 Não são registrados:
 
 - Senhas
@@ -402,43 +383,14 @@ Não são registrados:
 - Credenciais
 
 ---
-
 ### Controle de Acesso
-
 Apenas usuários autorizados possuem acesso:
 
 - Repositório GitHub
 - Projeto GCP
 - Configurações de deploy
-
+  
 ---
-
-# Evidências
-
-Adicionar na pasta:
-
-```text
-docs/
-```
-
-os seguintes arquivos:
-
-```text
-arquitetura.png
-observabilidade.png
-pipeline.png
-workflow-execution.png
-```
-
-As evidências devem demonstrar:
-
-- Execução do Workflow
-- Logs das Cloud Functions
-- Métricas do Monitoring
-- CI/CD executado com sucesso
-
----
-
 # Conclusão
 
-O projeto final demonstra a criação de uma arquitetura serverless moderna baseada em eventos utilizando Google Cloud Platform. A solução reúne processamento assíncrono, orquestração de serviços, integração com Inteligência Artificial, observabilidade completa, segurança e automação de deploy, consolidando todos os conceitos abordados durante a disciplina.
+O projeto final demonstra a criação de uma arquitetura serverless moderna baseada em eventos utilizando Google Cloud Platform. A solução reúne processamento assíncrono, orquestração de serviços, integração com Inteligência Artificial, observabilidade completa, segurança e automação de deploy.
